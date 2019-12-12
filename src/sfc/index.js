@@ -50,9 +50,9 @@ module.exports = function traverseTemplate (template, state) {
                 handleShowDirective(path, value, state);
             } else if (t.isJSXNamespacedName(node.name)) {
                 // v-bind/v-on
-                if (node.name.namespace.name === 'v-on') {
+                if (node.name.namespace.name === 'v-on' || node.name.namespace.name === "@" ) {
                     handleOnDirective(path, node.name.name.name, value);
-                } else if (node.name.namespace.name === 'v-bind') {
+                } else if (node.name.namespace.name === 'v-bind' || node.name.namespace.name === ':') {
                     handleBindDirective(path, node.name.name.name, value, state);
                 }
             } else if (node.name.name === 'v-for') {
